@@ -1,0 +1,6 @@
+const MethodTypeMode = {
+    QUANTITATIVE_METHOD_FORM: 'QUANTITATIVE_METHOD_FORM',
+    QUALITATIVE_METHOD_FORM: 'QUALITATIVE_METHOD_FORM'
+}
+
+export default MethodTypeMode
