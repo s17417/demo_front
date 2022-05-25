@@ -168,8 +168,10 @@ export default function ResultFormDetails(props){
     <main>
         <div className="content">
         <h2>{analyteResults ? `${analyteResults.ana.laboratoryTest.shortName} > ${analyteResults.ana.laboratoryTest.name}`:'Wynik'}</h2>     
-            {analyteResults?
-            <div className="details-main-box">
+            
+            
+            {analyteResults?<>
+                <div className="details-main-box">
                  <OrderRecordMetaData
                     orderDateLabel="Data skierowania:"
                     orderCreationDateLabel="Data utworzenia:"
@@ -178,7 +180,13 @@ export default function ResultFormDetails(props){
                 />
                 <div className="details-content-box">
                     <DetailsRow key={1} label="Nr zlecenia:" value={<Link to={`/lab/tenant/patientOrders/details/${analyteResults.ana.order.id}`}>{`${analyteResults.ana.order.orderIdentificationCode}`}</Link>}/>
-                    <DetailsRow key={1} label="Status:" value={`${analyteResults.ana.labTestOrderStatus}`}/>
+                    <DetailsRow key={7} label="Status:" value={`${analyteResults.ana.labTestOrderStatus}`}/>
+                   </div>
+                
+            </div>                    
+
+            <div className="details-main-box">
+                <div className="details-content-box">
                     <DetailsRow key={2} label="Pacjent:" value={`${analyteResults.ana.order.patient.surname} ${analyteResults.ana.order.patient.name?analyteResults.ana.order.patient.name:''}`}/>
                     <DetailsRow key={3} label="PESEL:" value={analyteResults.ana.order.patient.personalIdentificationNumber}/>
                     <DetailsRow key={4} label="Data urodzenia:" value={analyteResults.ana.order.patient.dateOfBirth}/>
@@ -187,8 +195,9 @@ export default function ResultFormDetails(props){
                     <DetailsRow key={6} label="Zlecający:" value={analyteResults.ana.order.orderingUnit?`${analyteResults.ana.order.orderingUnit.shortName} > ${analyteResults.ana.order.orderingUnit.name}`:''}/>
                 </div>
                 
-            </div>:''}
-            
+            </div>
+            </>:''}
+            <h2 style={{marginBottom:'0.5rem', marginTop:0}}></h2>
             {currentFormMode===formMode.EDIT?
                 <Form analyteResults={analyteResults} handleClick={handleClick} handleChange={handleChange} />:
                 <div className="details-content-box">
@@ -198,7 +207,6 @@ export default function ResultFormDetails(props){
                         refferentialValue={
                             obj.method.type=='quantitative'&&obj.method.refferentialRanges&&obj.method.refferentialRanges.length>0?
                             [
-                                <div className="details-refferential-value">{'WartRef:\t'}</div>,
                                 ...obj.method.refferentialRanges.map(ref => {
                                     let targetRefferentialRange=(new Date(analyteResults.ana.sample.collectionDate).valueOf()- new Date(analyteResults.ana.order.patient.dateOfBirth).valueOf())>ref.fromAge
                                     && (new Date(analyteResults.ana.sample.collectionDate).valueOf()- new Date(analyteResults.ana.order.patient.dateOfBirth).valueOf())<ref.toAge

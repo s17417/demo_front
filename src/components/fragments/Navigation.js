@@ -21,18 +21,17 @@ function Navigation (){
 			setClicked(key)
 			setClickedMenu(key);
 		}
-		else {
-			setClicked();
-			setClickedMenu();
-		}
 		
 	};
 	 
 	const handleClickOutside = (event) => {
-		if (ref.current && !ref.current.contains(event.target)) {
+		console.log(event.target)
+		//if (ref.current && !ref.current.contains(event.target)) {
 			setClicked(false);
 			setClicked();
-		}
+			setClickedMenu();
+		//} 
+
 	};
 
 	useEffect(() => {
@@ -109,9 +108,11 @@ function Navigation (){
 			<li>
 				<div className="dropdown">
 					<button className="dropdown-btn" onClick={() => showMenu(10)}>Pacjenci</button>
-					<div ref={ref} className={(isClicked===10) ? "show" : "dropdown-container"}>
+					<div ref={ref} className={isClicked===10 ? "show" : "dropdown-container"}>
 						<MyLink name="Wyszukaj" to="/lab/tenant/patients" onClick={useClick} isActive={activeIndex === 11} index={11}/>
-						{checkPriviliges("SPECIFIC_DATABASE_USER",stateContext.userRole)?<MyLink name="Dodaj" to="/lab/tenant/patients/add" onClick={useClick} isActive={activeIndex === 12} index={12}/>:''}
+						{checkPriviliges("SPECIFIC_DATABASE_USER",stateContext.userRole)?
+							<MyLink name="Dodaj" to="/lab/tenant/patients/add" onClick={useClick} isActive={activeIndex === 12} index={12}/>:''
+						}
 					</div>
 				</div>
 			</li>
@@ -136,24 +137,24 @@ function Navigation (){
 
 				{stateContext.signedIn==false
 				? (<>
-					<li><MyLink name="Zaloguj" to="/signIn" onClick={useClick} isActive={activeIndex === 10} index={10}></MyLink></li>
-					<li><MyLink name="Utwórz konto" to="/createUser" onClick={useClick} isActive={activeIndex === 11} index={11}></MyLink></li>
+					<li><MyLink name="Zaloguj" to="/signIn" onClick={useClick} isActive={activeIndex === 110} index={110}></MyLink></li>
+					<li><MyLink name="Utwórz konto" to="/createUser" onClick={useClick} isActive={activeIndex === 120} index={120}></MyLink></li>
 
 				</>)
 				: (<></>)}
 				{stateContext.signedIn==true
 				? (<>
-					<li><MyLink name="Wyloguj" to="/" onClick={() => authContext.signOut()} isActive={activeIndex === 12} index={12}></MyLink></li>
+					<li><MyLink name="Wyloguj" to="/" onClick={() => authContext.signOut()} isActive={activeIndex === 100} index={100}></MyLink></li>
 				</>)
 				: (<></>)}
 
 				{stateContext.signedIn==true
 				? (<>
 					<li>
-						<MyLink name='Konto' to="/lab/userDetails" onClick={useClick} isActive={activeIndex === 13} index={13}/>
+						<MyLink name='Konto' to="/lab/userDetails" onClick={useClick} isActive={activeIndex === 130} index={130}/>
 					</li>
 					<li>
-						<MyLink name="Laboratoria" to="/lab/tenantSignIn" onClick={useClick} isActive={activeIndex === 14} index={14}/>
+						<MyLink name="Laboratoria" to="/lab/tenantSignIn" onClick={useClick} isActive={activeIndex === 140} index={140}/>
 					</li>
 
 				</>)

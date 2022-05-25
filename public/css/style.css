@@ -91,11 +91,10 @@ nav ul{
 .show {
     border-bottom: #800000;
     border-bottom-style: solid;
-    
     display: grid;
     position: absolute; /*pierwotnie absolute*/
     background-color: rgb(99, 99, 99);
-    min-width: 7rem;
+    min-width: 6.84rem;
     box-shadow: 0px 10px 13px -10px rgb(0, 0, 0);
     z-index: 1;
 }
@@ -668,7 +667,7 @@ abbr[title='required'] {
 
 .details-content-box{
     display: grid;
-    grid-template-columns:  max-content minmax(0,'fit-content') ;
+    grid-template-columns:  minmax(150px, max-content) minmax(100px, 1fr);
     grid-row: auto;
     grid-column: 1/2;
     white-space: nowrap;
@@ -682,9 +681,11 @@ abbr[title='required'] {
     white-space: nowrap;
 }
 
+
+
 .details-value{
     padding-right: 1rem;
-    margin: 0rem;
+    margin-left: 0rem;
     grid-column: 2/3;
     white-space: pre-wrap;
     word-break: break-all;

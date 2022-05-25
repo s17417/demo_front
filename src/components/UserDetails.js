@@ -126,9 +126,9 @@ export default function UserDetails(props){
                         )
                     }
                 </TableComponent>
-            <div className="page-buttons">
+            {/*<div className="page-buttons">
 				<Link to={`/lab/userDetails/edit/`} className="button-add">Edytuj</Link>
-            </div>
+                </div>*/}
         </>}
         </div>
     </main>
