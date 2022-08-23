@@ -240,7 +240,7 @@ function App() {
 
           <Route path="/lab/tenant/controlOrders/add"
             element={
-              <PrivateRouteTenant auth={{isAuthenticated: state.signedIn&&state.signedTenant!=null}&&checkPriviliges("SPECIFIC_DATABASE_TECHNICIAN",state.userRole)}>
+              <PrivateRouteTenant auth={{isAuthenticated: state.signedIn&&state.signedTenant!=null&&checkPriviliges("SPECIFIC_DATABASE_TECHNICIAN",state.userRole)}}>
                 <ControlOrderForm/>
               </PrivateRouteTenant>
               

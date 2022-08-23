@@ -173,7 +173,8 @@ export default function ControlOrderList(){
 				/>
 				{checkPriviliges("SPECIFIC_DATABASE_TECHNICIAN",context.userRole)?	
 					<p>
-						<Link to="/lab/tenant/controlOrders/add" className="button-add">Dodaj zlecenie kontrolne</Link>
+						
+						<Link to="add/" className="button-add">Dodaj zlecenie kontrolne</Link>
 					</p>
 					:''
 				}

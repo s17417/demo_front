@@ -56,13 +56,13 @@ export default function PhisicianForm(props){
 		.then(res => {
 			switch (res.status){
                 case (200):{
-                    navigate(`/lab/tenant/phisicians/details/${phiId}`);
+                    navigate(`/lab/tenant/phisicians/details/${res.data.id}`);
                 };
                 break;
 				case (201):{
 				    setPhisician(_.cloneDeep(phisicianData));
 				    setConnectionError("");
-                    navigate(`/lab/tenant/phisicians/details/${phiId}`);
+                    navigate(`/lab/tenant/phisicians/details/${res.data.id}`);
 				};
 				break;
 				case (422): {

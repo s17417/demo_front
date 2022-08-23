@@ -62,13 +62,13 @@ export default function OrderingUnitForm(props){
 		.then(res => {
 			switch (res.status){
                 case (200):{
-                    navigate(`/lab/tenant/orderingUnits/details/${ordId}`);
+                    navigate(`/lab/tenant/orderingUnits/details/${res.data.id}`);
                 };
                 break;
 				case (201):{
 				    //setOrderingUnit(_.cloneDeep(orderingUnitData));
 				    setConnectionError("");
-                    navigate(`/lab/tenant/orderingUnits/details/${ordId}`);
+                    navigate(`/lab/tenant/orderingUnits/details/${res.data.id}`);
 				};
 				break;
 				case (422): {

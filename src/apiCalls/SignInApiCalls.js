@@ -8,6 +8,7 @@ const path= basePath;
 
 
 export function signIn(email, password){
+    console.log(window.location.hostname);
     let url = new URL(`${path}login`);
     url.searchParams.append("username",email);
     url.searchParams.append("password",password);
